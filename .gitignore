@@ -1,0 +1,49 @@
+# JP Clinical AI — .gitignore
+
+# Gradle
+.gradle/
+build/
+**/build/
+*.iml
+
+# Android
+*.apk
+*.aab
+local.properties
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Model files — too large for git, downloaded separately via HuggingFace CLI
+models/
+**/models/
+*.pte
+*.onnx
+*.tflite
+*.bin
+
+# AARs live in libs/ but are committed so CI can build
+# Remove the next two lines if you prefer to download them in CI
+# androidApp/libs/executorch.aar
+# androidApp/libs/sherpa_onnx.aar
+
+# Sensitive / generated ObjectBox files
+objectbox-models/
+**/.cxx/
+
+# Medgem reference — read-only, not modified, not re-built here
+medgem-reference/
+
+# Key files — never commit Android Keystore files
+*.jks
+*.keystore
