@@ -1,4 +1,4 @@
-// Version catalogue — all dependency versions in one place
+# Version catalogue — all dependency versions in one place
 [versions]
 kotlin = "2.0.21"
 agp = "8.5.2"

@@ -209,4 +209,323 @@ class FormMapperTest {
         val failures = results.filter { !it.passed }
         assertTrue(failures.isEmpty(), "Profile 1 should pass all rules but failed: ${failures.map { "Rule ${it.ruleId}: ${it.message}" }}")
     }
+
+    // ── Emergency Assessment Mapper Tests ─────────────────────────────────────
+
+    @Test
+    fun `emergency assessment maps correctly demographics and gp`() {
+        val schema = profiles[0]
+        val output = EmergencyAssessmentMapper.map(schema)
+        assertEquals(schema.patient.fullName, output.patientName)
+        assertEquals(schema.patient.hcNumber, output.hcNumber)
+        assertEquals(schema.patient.dateOfBirth, output.dateOfBirth)
+        assertEquals(schema.patient.placeOfAssessment, output.placeOfAssessment)
+        assertEquals(schema.referral.assessorName, output.assessorName)
+        assertEquals(schema.patient.gpName, output.gpName)
+        assertEquals(schema.assessmentDate, output.assessmentDate)
+        assertEquals(schema.patient.nextOfKinName, output.nextOfKinName)
+    }
+
+    // ── Confidentiality Mapper Tests ──────────────────────────────────────────
+
+    @Test
+    fun `confidentiality maps capacity string correctly`() {
+        val schema1 = profiles[0].copy(
+            confidentiality = profiles[0].confidentiality.copy(capacityToConsent = true)
+        )
+        assertEquals("Yes", ConfidentialityMapper.map(schema1).capacityToConsent)
+
+        val schema2 = profiles[0].copy(
+            confidentiality = profiles[0].confidentiality.copy(capacityToConsent = false)
+        )
+        assertEquals("No", ConfidentialityMapper.map(schema2).capacityToConsent)
+
+        val schema3 = profiles[0].copy(
+            confidentiality = profiles[0].confidentiality.copy(capacityToConsent = null)
+        )
+        assertEquals("Not assessed", ConfidentialityMapper.map(schema3).capacityToConsent)
+    }
+
+    // ── Collateral Mapper Tests ───────────────────────────────────────────────
+
+    @Test
+    fun `collateral validation works and flags rule 9 if reason missing`() {
+        val output1 = CollateralMapper.map(profiles[0])
+        assertTrue(output1.validationPassed)
+        assertTrue(output1.validationMessages.isEmpty())
+
+        val output2 = CollateralMapper.map(profiles[9])
+        assertFalse(output2.validationPassed)
+        assertTrue(output2.validationMessages.any { it.contains("Rule 9") })
+    }
+
+    // ── History of Presenting Complaint Mapper Tests ─────────────────────────
+
+    @Test
+    fun `history of presenting complaint flags rule 8 when occurred is null`() {
+        val output1 = HistoryPresentingComplaintMapper.map(profiles[0])
+        assertTrue(output1.validationPassed)
+
+        val output2 = HistoryPresentingComplaintMapper.map(profiles[7])
+        assertFalse(output2.validationPassed)
+        assertTrue(output2.validationMessages.any { it.contains("Rule 8") })
+    }
+
+    // ── Mental State Examination Mapper Tests ───────────────────────────────
+
+    @Test
+    fun `mental state exam flags rules 1 and 2 correctly`() {
+        val output1 = MentalStateExaminationMapper.map(profiles[0])
+        assertTrue(output1.validationPassed)
+
+        val output2 = MentalStateExaminationMapper.map(profiles[7])
+        assertFalse(output2.validationPassed)
+        val msgs = output2.validationMessages
+        assertTrue(msgs.any { it.contains("Rule 1") && it.contains("Thoughts of Life Not Worth Living") })
+        assertTrue(msgs.any { it.contains("Rule 2") && it.contains("Thoughts of Self Harm") })
+    }
+
+    // ── Mental Health History Mapper Tests ─────────────────────────────────────
+
+    @Test
+    fun `mental health history maps correctly`() {
+        val schema = profiles[0]
+        val output = MentalHealthHistoryMapper.map(schema)
+        assertEquals(schema.history.mentalHealthHistory.diagnosis, output.diagnosis)
+        assertEquals(schema.history.mentalHealthHistory.mhoUse, output.mhoUse)
+    }
+
+    // ── Personal History Mapper Tests ─────────────────────────────────────────
+
+    @Test
+    fun `personal history maps correctly`() {
+        val schema = profiles[0]
+        val output = PersonalHistoryMapper.map(schema)
+        assertEquals(schema.history.personalHistory.earlyChildhood, output.earlyChildhood)
+    }
+
+    // ── Family History Mapper Tests ───────────────────────────────────────────
+
+    @Test
+    fun `family history maps correctly`() {
+        val schema = profiles[0]
+        val output = FamilyHistoryMapper.map(schema)
+        assertEquals(schema.history.familyHistory.livingArrangements, output.livingArrangements)
+        assertEquals(schema.history.familyHistory.accommodationType, output.accommodationType)
+        assertEquals(schema.history.familyHistory.accessToLethalMeans, output.accessToLethalMeans)
+    }
+
+    // ── Abuse Mapper Tests ────────────────────────────────────────────────────
+
+    @Test
+    fun `abuse mapper maps correctly`() {
+        val schema = profiles[0]
+        val output = AbuseMapper.map(schema)
+        assertEquals(schema.abuse.abuseIssuesIdentified, output.abuseIssuesIdentified)
+        assertEquals(schema.abuse.vulnerabilityIdentified, output.vulnerabilityIdentified)
+    }
+
+    // ── Offending History Mapper Tests ────────────────────────────────────────
+
+    @Test
+    fun `offending history maps and triggers rule 4 when null`() {
+        val output1 = OffendingHistoryMapper.map(profiles[0])
+        assertTrue(output1.validationPassed)
+
+        val customOffending = profiles[0].offendingHistory.copy(accessToWeapons = null, gunLicence = null)
+        val schema = profiles[0].copy(offendingHistory = customOffending)
+        val output2 = OffendingHistoryMapper.map(schema)
+        assertFalse(output2.validationPassed)
+        assertTrue(output2.validationMessages.any { it.contains("Weapons access") })
+        assertTrue(output2.validationMessages.any { it.contains("Gun licence") })
+    }
+
+    // ── Social Circumstances Mapper Tests ─────────────────────────────────────
+
+    @Test
+    fun `social circumstances maps correctly`() {
+        val schema = profiles[0]
+        val output = SocialCircumstancesMapper.map(schema)
+        assertEquals(schema.socialCircumstances.housing, output.housing)
+    }
+
+    // ── Medications Mapper Tests ──────────────────────────────────────────────
+
+    @Test
+    fun `medications maps and triggers rule 6 when compliance missing`() {
+        val output1 = MedicationsMapper.map(profiles[0])
+        assertTrue(output1.validationPassed)
+
+        val output2 = MedicationsMapper.map(profiles[8])
+        assertFalse(output2.validationPassed)
+        assertTrue(output2.validationMessages.any { it.contains("Rule 6") })
+    }
+
+    // ── Occupational Needs Mapper Tests ───────────────────────────────────────
+
+    @Test
+    fun `occupational needs maps correctly`() {
+        val schema = profiles[0]
+        val output = OccupationalNeedsMapper.map(schema)
+        assertEquals(schema.socialCircumstances.occupationalNeeds, output.occupationalNeeds)
+    }
+
+    // ── Substance Misuse Mapper Tests ─────────────────────────────────────────
+
+    @Test
+    fun `substance misuse maps correctly`() {
+        val schema = profiles[0]
+        val output = SubstanceMisuseMapper.map(schema)
+        assertEquals(schema.substanceMisuse.currentAlcoholUse.present, output.alcoholPresent)
+        assertEquals(schema.substanceMisuse.currentDrugUse.present, output.drugPresent)
+    }
+
+    // ── Audit Mapper Tests ────────────────────────────────────────────────────
+
+    @Test
+    fun `audit mapper scoring and risk bands work correctly`() {
+        val incompleteSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                auditScore = AuditScore(q1 = 2)
+            )
+        )
+        val incompleteOutput = AuditMapper.map(incompleteSchema)
+        assertEquals("Incomplete assessment", incompleteOutput.riskLevel)
+        assertFalse(incompleteOutput.followUpRequired)
+
+        val lowerSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                auditScore = AuditScore(q1 = 1, q2 = 1, q3 = 1, q4 = 1, q5 = 1, q6 = 0, q7 = 0, q8 = 0, q9 = 0, q10 = 0)
+            )
+        )
+        val lowerOutput = AuditMapper.map(lowerSchema)
+        assertEquals(5, lowerOutput.totalScore)
+        assertEquals("Lower risk", lowerOutput.riskLevel)
+        assertFalse(lowerOutput.followUpRequired)
+
+        val increasingSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                auditScore = AuditScore(q1 = 2, q2 = 2, q3 = 2, q4 = 2, q5 = 2, q6 = 0, q7 = 0, q8 = 0, q9 = 0, q10 = 0)
+            )
+        )
+        val increasingOutput = AuditMapper.map(increasingSchema)
+        assertEquals(10, increasingOutput.totalScore)
+        assertEquals("Increasing risk", increasingOutput.riskLevel)
+        assertTrue(increasingOutput.followUpRequired)
+
+        val higherSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                auditScore = AuditScore(q1 = 3, q2 = 3, q3 = 3, q4 = 3, q5 = 3, q6 = 2, q7 = 0, q8 = 0, q9 = 0, q10 = 0)
+            )
+        )
+        val higherOutput = AuditMapper.map(higherSchema)
+        assertEquals(17, higherOutput.totalScore)
+        assertEquals("Higher risk", higherOutput.riskLevel)
+        assertTrue(higherOutput.followUpRequired)
+
+        val dependenceSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                auditScore = AuditScore(q1 = 4, q2 = 4, q3 = 4, q4 = 4, q5 = 4, q6 = 4, q7 = 0, q8 = 0, q9 = 0, q10 = 0)
+            )
+        )
+        val dependenceOutput = AuditMapper.map(dependenceSchema)
+        assertEquals(24, dependenceOutput.totalScore)
+        assertEquals("Possible dependence", dependenceOutput.riskLevel)
+        assertTrue(dependenceOutput.followUpRequired)
+    }
+
+    // ── Ldq Mapper Tests ──────────────────────────────────────────────────────
+
+    @Test
+    fun `ldq mapper scoring dependence levels and alternative referrals work correctly`() {
+        val incompleteSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                ldqScore = LdqScore(q1 = 2)
+            )
+        )
+        val incompleteOutput = LdqMapper.map(incompleteSchema)
+        assertEquals("Incomplete assessment", incompleteOutput.dependenceLevel)
+        assertFalse(incompleteOutput.catReferralIndicated)
+        assertNull(incompleteOutput.alternativeReferralRecommendation)
+
+        val lowSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                ldqScore = LdqScore(q1 = 1, q2 = 1, q3 = 1, q4 = 1, q5 = 1, q6 = 0, q7 = 0, q8 = 0, q9 = 0, q10 = 0)
+            )
+        )
+        val lowOutput = LdqMapper.map(lowSchema)
+        assertEquals(5, lowOutput.totalScore)
+        assertEquals("Low dependence", lowOutput.dependenceLevel)
+        assertFalse(lowOutput.catReferralIndicated)
+        assertTrue(lowOutput.alternativeReferralRecommendation!!.contains("Addictions NI") || lowOutput.alternativeReferralRecommendation!!.contains("Daisy"))
+
+        val mediumSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                ldqScore = LdqScore(q1 = 2, q2 = 2, q3 = 2, q4 = 2, q5 = 2, q6 = 2, q7 = 2, q8 = 2, q9 = 0, q10 = 0)
+            )
+        )
+        val mediumOutput = LdqMapper.map(mediumSchema)
+        assertEquals(16, mediumOutput.totalScore)
+        assertEquals("Medium dependence", mediumOutput.dependenceLevel)
+        assertFalse(mediumOutput.catReferralIndicated)
+        assertTrue(mediumOutput.alternativeReferralRecommendation!!.contains("Addictions NI"))
+
+        val catMediumSchema = profiles[0].copy(
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                ldqScore = LdqScore(q1 = 2, q2 = 2, q3 = 2, q4 = 2, q5 = 2, q6 = 2, q7 = 2, q8 = 2, q9 = 2, q10 = 3)
+            )
+        )
+        val catMediumOutput = LdqMapper.map(catMediumSchema)
+        assertEquals(21, catMediumOutput.totalScore)
+        assertEquals("Medium dependence", catMediumOutput.dependenceLevel)
+        assertTrue(catMediumOutput.catReferralIndicated)
+        assertNull(catMediumOutput.alternativeReferralRecommendation)
+
+        val youthSchema = profiles[0].copy(
+            patient = profiles[0].patient.copy(dateOfBirth = "2015-05-12"),
+            substanceMisuse = profiles[0].substanceMisuse.copy(
+                ldqScore = LdqScore(q1 = 1, q2 = 1, q3 = 1, q4 = 1, q5 = 1, q6 = 0, q7 = 0, q8 = 0, q9 = 0, q10 = 0)
+            )
+        )
+        val youthOutput = LdqMapper.map(youthSchema)
+        assertTrue(youthOutput.alternativeReferralRecommendation!!.contains("Daisy"))
+    }
+
+    // ── Child Protection Mapper Tests ─────────────────────────────────────────
+
+    @Test
+    fun `child protection unocini trigger logic and rule 3 work correctly`() {
+        val output1 = ChildProtectionMapper.map(profiles[0])
+        assertFalse(output1.childrenInRegularContact)
+        assertFalse(output1.unociniReferralRequired)
+        assertTrue(output1.validationPassed)
+
+        val output2 = ChildProtectionMapper.map(profiles[5])
+        assertTrue(output2.childrenInRegularContact)
+        assertTrue(output2.unociniReferralRequired)
+        assertTrue(output2.validationPassed)
+
+        val customCP = profiles[5].childProtection.copy(unociniReferralRequired = false)
+        val schema = profiles[5].copy(childProtection = customCP)
+        val output3 = ChildProtectionMapper.map(schema)
+        assertFalse(output3.validationPassed)
+        assertTrue(output3.validationMessages.any { it.contains("Rule 3") })
+    }
+
+    // ── Epic Contact Note Mapper Tests ────────────────────────────────────────
+
+    @Test
+    fun `epic contact note mapper builds summaries and maps interventions correctly`() {
+        val schema = profiles[0].copy(
+            epicContactNote = profiles[0].epicContactNote.copy(
+                interventionsUsed = listOf(EpicIntervention.ACTIVITY_PLANNING, EpicIntervention.SLEEP_HYGIENE)
+            )
+        )
+        val output = EpicContactNoteMapper.map(schema)
+        assertEquals(schema.patient.fullName, output.patientName)
+        assertTrue(output.collateralSummary.contains("Wife"))
+        assertTrue(output.medicationsSummary.contains("Sertraline"))
+        assertTrue(output.interventionsUsed.contains("ACTIVITY_PLANNING"))
+        assertTrue(output.interventionsUsed.contains("SLEEP_HYGIENE"))
+    }
 }
