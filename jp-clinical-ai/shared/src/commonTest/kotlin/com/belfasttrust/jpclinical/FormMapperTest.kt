@@ -71,8 +71,8 @@ class FormMapperTest {
     fun `safety plan maps supporters from schema`() {
         val output = SafetyPlanMapper.map(profiles[0])
         assertTrue(output.step4Supporters.isNotEmpty())
-        assertEquals("Sister Mary", output.step4Supporters[0].name)
-        assertEquals("07700900001", output.step4Supporters[0].phone)
+        assertEquals("Wife Nuala", output.step4Supporters[0].name)
+        assertEquals("07700900101", output.step4Supporters[0].phone)
     }
 
     @Test
@@ -99,7 +99,7 @@ class FormMapperTest {
     @Test
     fun `safety plan includes most important reason to live`() {
         val output = SafetyPlanMapper.map(profiles[0])
-        assertEquals("My grandchildren", output.mostImportantThingWorthLivingFor)
+        assertEquals("Grandchildren", output.mostImportantThingWorthLivingFor)
     }
 
     // ── PISANI Mapper Tests ──────────────────────────────────────────────────

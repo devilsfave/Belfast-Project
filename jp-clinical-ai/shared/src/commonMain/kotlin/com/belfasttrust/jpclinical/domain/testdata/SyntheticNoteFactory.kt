@@ -92,6 +92,27 @@ object SyntheticNoteFactory {
         nurseSignatureTimestamp = if (signed) "2026-05-12T15:30:00Z" else null
     )
 
+    private fun refusedSafetyPlan() = SafetyPlan(
+        step1WarningSignals = "INCOMPLETE",
+        step2InternalCopingStrategies = "INCOMPLETE",
+        step3SocialSettingsForDistraction = "INCOMPLETE",
+        step4PeopleToAskForHelp = listOf(SafetyContact("INCOMPLETE", "INCOMPLETE")),
+        step5ProfessionalsAndAgencies = Step5Professionals(
+            gpName = "INCOMPLETE",
+            gpPhone = "INCOMPLETE",
+            gpOohBeldoc = "INCOMPLETE",
+            gpOohSebdoc = "INCOMPLETE",
+            lifeline247 = "INCOMPLETE",
+            otherContacts = listOf("INCOMPLETE")
+        ),
+        step6MakingEnvironmentSafe = "INCOMPLETE",
+        mostImportantReasonToLive = "INCOMPLETE",
+        followUpCallAgreed = false,
+        followUpCallDatetime = null,
+        nurseSignatureCaptured = false,
+        nurseSignatureTimestamp = null
+    )
+
     private fun basePisani(risk: RiskLevel, strengths: String = "Good family support, future-orientated") = PisaniRiskAssessment(
         strengthsAndProtectiveFactors = strengths,
         longTermRiskFactors = "Family history of depression. Previous episode 2019.",
@@ -201,12 +222,32 @@ object SyntheticNoteFactory {
 
     /** Profile 1: Low risk depression — all fields clean, all rules pass */
     fun profile1LowRiskDepression() = buildSchema(
-        name = "Ciaran O'Donnell", hcNumber = "HC200001", risk = RiskLevel.LOW
+        name = "Ciaran O'Donnell", hcNumber = "HC200001", risk = RiskLevel.LOW,
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Mood dropping in evenings; Cancelling family calls; Poor sleep",
+            step2InternalCopingStrategies = "Gardening for 20 minutes; Listening to Irish folk music; Cup of tea with Nuala",
+            step3SocialSettingsForDistraction = "Name: Grandchildren, Place: Family kitchen; Name: Nuala, Place: Short walk on Falls Road",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Wife Nuala", "07700900101")
+            ),
+            step6MakingEnvironmentSafe = "Wife Nuala stores medications; No weapons in home",
+            mostImportantReasonToLive = "Grandchildren"
+        )
     )
 
     /** Profile 2: Medium risk anxiety — includes panic features */
     fun profile2MediumRiskAnxiety() = buildSchema(
         name = "Siobhan McAllister", hcNumber = "HC200002", risk = RiskLevel.MEDIUM,
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Panic attacks; Hyperventilating; Withdrawing from friends",
+            step2InternalCopingStrategies = "Breathing exercises; Short walks; Calling sister",
+            step3SocialSettingsForDistraction = "Name: Sister, Place: Her garden; Name: Friend Claire, Place: Quiet coffee shop",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Sister", "07700900102")
+            ),
+            step6MakingEnvironmentSafe = "Medications stored safely by Siobhan herself; Keeps only current weekly supply accessible",
+            mostImportantReasonToLive = "Independence, family"
+        ),
         pisani = basePisani(RiskLevel.MEDIUM).copy(
             stressorsAndPrecipitants = "COVID-19 fears, shielding since March, loss of independence",
             symptomsSufferingRecentChanges = "Panic attacks 3x weekly, hyperventilation, chest tightness"
@@ -219,6 +260,17 @@ object SyntheticNoteFactory {
         suicidality = baseSuicidality(
             tlnwl = "Passive TLNWL expressed — 'some days I feel life isn't worth it'",
             tsh = "No TSH reported", ideation = true
+        ),
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Flashbacks; Social withdrawal; Sleep disturbance",
+            step2InternalCopingStrategies = "Grounding exercise naming five objects; Breathing routine; Sitting with family photographs",
+            step3SocialSettingsForDistraction = "Name: Grandchildren, Place: Family visit; Name: Nuala, Place: Living room",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Wife Nuala", "07700900103"),
+                SafetyContact("GP Dr Gilleland", "02890311118")
+            ),
+            step6MakingEnvironmentSafe = "Wife Nuala stores all medications; Weapons already surrendered to PSNI",
+            mostImportantReasonToLive = "Grandchildren"
         ),
         pisani = basePisani(RiskLevel.HIGH).copy(
             longTermRiskFactors = "25-year trauma history, uncle died by suicide (hanging), family hx depression",
@@ -235,6 +287,16 @@ object SyntheticNoteFactory {
             tsh = "TSH present — has been cutting arms",
             ideation = true, attempt = false
         ),
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Thoughts of overdose; Self-harm urges; Isolating",
+            step2InternalCopingStrategies = "Use crisis card; Move to shared room with wife; Cold water grounding",
+            step3SocialSettingsForDistraction = "Name: Wife, Place: Kitchen table; Name: Brother, Place: Phone call",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Wife", "07700900104")
+            ),
+            step6MakingEnvironmentSafe = "Wife locks all medications in cabinet; Psychiatric review pending",
+            mostImportantReasonToLive = "Wife and children"
+        ),
         pisani = basePisani(RiskLevel.VERY_HIGH).copy(
             impulsivityAndSelfControl = "Poor impulse control, acts without considering consequences",
             recentAndPresentSuicidalBehaviours = "Active SI with vague plan (medication overdose). No immediate intent.",
@@ -245,6 +307,16 @@ object SyntheticNoteFactory {
     /** Profile 5: Medium risk with active substance misuse — AUDIT/LDQ scores populated */
     fun profile5MediumRiskSubstanceMisuse() = buildSchema(
         name = "Roisin Kelly", hcNumber = "HC200005", risk = RiskLevel.MEDIUM,
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Mood swings; Urge to drink; Missing medication",
+            step2InternalCopingStrategies = "Attending AA; Calling sponsor; Not buying alcohol",
+            step3SocialSettingsForDistraction = "Name: AA group, Place: Community hall; Name: Sober friend, Place: Evening phone call",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("AA sponsor", "07700900105")
+            ),
+            step6MakingEnvironmentSafe = "Mirtazapine and Diazepam stored by family member; No alcohol kept in home",
+            mostImportantReasonToLive = "Her children"
+        ),
         medications = baseMedications(listOf(
             Medication("Mirtazapine", "45mg", "nocte", complianceIssues = "Compliance poor — misses doses when drinking"),
             Medication("Diazepam", "5mg", "PRN", complianceIssues = null)
@@ -254,6 +326,16 @@ object SyntheticNoteFactory {
     /** Profile 6: Medium risk WITH children — triggers UNOCINI check (Rule 3) */
     fun profile6ChildrenInHomeUnocini() = buildSchema(
         name = "Aisling Doherty", hcNumber = "HC200006", risk = RiskLevel.MEDIUM,
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Becoming tearful after school run; Feeling overwhelmed at bedtime; Avoiding calls from family",
+            step2InternalCopingStrategies = "Five-minute breathing pause; Make tea and sit in kitchen; Write down immediate worries",
+            step3SocialSettingsForDistraction = "Name: Conor Doherty, Place: Kitchen; Name: Children, Place: Supervised family activity",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Partner Conor Doherty", "07700900106")
+            ),
+            step6MakingEnvironmentSafe = "Partner stores medications; UNOCINI referral has been made",
+            mostImportantReasonToLive = "Son Cian and daughter Aoife"
+        ),
         childProtection = ChildProtection(
             childrenInRegularContact = true,
             children = listOf(
@@ -276,6 +358,17 @@ object SyntheticNoteFactory {
             gunLicence = true,
             gunLicenceDetails = "Registered shotgun for clay pigeon shooting. Stored in locked cabinet."
         ),
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Deep isolation; Not leaving house; Dark thoughts",
+            step2InternalCopingStrategies = "Open curtains and make tea; Phone clay pigeon club contact; Sit outside for ten minutes",
+            step3SocialSettingsForDistraction = "Name: Nearest neighbour, Place: Farm lane check-in; Name: Local clay pigeon club, Place: Clubhouse",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("GP Dr Gilleland", "02890311118"),
+                SafetyContact("Neighbour", "07700900107")
+            ),
+            step6MakingEnvironmentSafe = "Shotgun licence surrendered to PSNI; Medications stored with neighbour until psychiatric review",
+            mostImportantReasonToLive = "Clay pigeon shooting, sense of purpose"
+        ),
         pisani = basePisani(RiskLevel.HIGH).copy(
             longTermRiskFactors = "Access to firearms, isolated rural location, recent divorce"
         )
@@ -285,12 +378,23 @@ object SyntheticNoteFactory {
     fun profile8MissingSuicidality() = buildSchema(
         name = "Brendan McCann", hcNumber = "HC200008", risk = RiskLevel.MEDIUM,
         suicidality = baseSuicidality(tlnwl = null, tsh = null),
+        safetyPlan = refusedSafetyPlan(),
         suicideEvents = PresentingSuicideEvents(occurred = null)
     )
 
     /** Profile 9: Medications but ALL compliance fields null — triggers Rule 6 */
     fun profile9MedicationNoCompliance() = buildSchema(
         name = "Mairead Quinn", hcNumber = "HC200009", risk = RiskLevel.LOW,
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Forgetting evening tablets; Sleeping through morning routine; Becoming muddled with blister pack",
+            step2InternalCopingStrategies = "Use written medication checklist; Sit with a cup of tea; Phone daughter before bedtime",
+            step3SocialSettingsForDistraction = "Name: Daughter, Place: Her house; Name: Grandchildren, Place: Weekend visit",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Daughter", "07700900109")
+            ),
+            step6MakingEnvironmentSafe = "Daughter stores medications; Weekly blister pack checked at family visit",
+            mostImportantReasonToLive = "Daughter and grandchildren"
+        ),
         medications = baseMedications(listOf(
             Medication("Olanzapine", "5mg", "nocte", complianceIssues = null),
             Medication("Sertraline", "50mg", "once daily", complianceIssues = null)
@@ -300,6 +404,16 @@ object SyntheticNoteFactory {
     /** Profile 10: Collateral declined with no reason — triggers Rule 9 */
     fun profile10CollateralDeclined() = buildSchema(
         name = "Connor Gallagher", hcNumber = "HC200010", risk = RiskLevel.LOW,
+        safetyPlan = baseSafetyPlan().copy(
+            step1WarningSignals = "Closing down discussion; Irritability when collateral discussed; Spending evenings alone",
+            step2InternalCopingStrategies = "Step away from argument; Breathing routine; Watch familiar television programme",
+            step3SocialSettingsForDistraction = "Name: Wife Nuala, Place: Kitchen; Name: Family, Place: Sunday meal",
+            step4PeopleToAskForHelp = listOf(
+                SafetyContact("Wife Nuala", "07700900110")
+            ),
+            step6MakingEnvironmentSafe = "Wife Nuala stores medications; Crisis plan reviewed despite collateral declined",
+            mostImportantReasonToLive = "Wife Nuala and family"
+        ),
         collateral = baseCollateral(obtained = false, reason = null)
     )
 }
