@@ -74,6 +74,12 @@ dependencies {
     implementation(libs.compose.viewmodel)
     implementation(libs.compose.navigation)
 
+    // ── AndroidX AppCompat (MainActivity extends AppCompatActivity) ──────────
+    implementation("androidx.appcompat:appcompat:1.7.0")
+
+    // ── DataStore Preferences ─────────────────────────────────────────────────
+    implementation(libs.androidx.datastore.preferences)
+
     // ── Hilt DI ──────────────────────────────────────────────────────────────
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
