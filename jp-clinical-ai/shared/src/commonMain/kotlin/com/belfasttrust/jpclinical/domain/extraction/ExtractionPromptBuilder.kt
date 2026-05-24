@@ -1,0 +1,97 @@
+package com.belfasttrust.jpclinical.domain.extraction
+
+object ExtractionPromptBuilder {
+    private const val GLOSSARY = """
+BELFAST TRUST CLINICAL ABBREVIATIONS GLOSSARY:
+- HTT: Home Treatment Team
+- TLNWL: Thoughts of Life Not Worth Living
+- TSH: Thoughts of Self Harm
+- MSE: Mental State Examination
+- PISANI: Risk assessment framework (8 domains)
+- UNOCINI: Understanding the Needs of Children in Northern Ireland (referral form)
+- MHO: Mental Health Officer
+- FCC: Family and Children's Carers
+- AUDIT: Alcohol Use Disorders Identification Test
+- LDQ: Leeds Dependence Questionnaire
+- CAT: Community Addictions Team
+- SOAP: Subjective Objective Assessment Plan (note format)
+- H&C: Health and Care (patient ID number)
+- BelDOC: Belfast Doctor on Call (GP out of hours, 02890744447)
+- SEBDOC: South and East Belfast Doctor on Call (02890796220)
+- OOH: Out of Hours
+- NMC: Nursing and Midwifery Council
+- FHIR: Fast Healthcare Interoperability Resources
+- EHR: Electronic Health Record
+- IG: Information Governance
+- DPA: Data Processing Agreement
+"""
+
+    private const val EXTRACTION_RULES = """
+EXTRACTION RULES:
+
+Rule 1: Output ONLY valid JSON. No prose. No markdown. No explanation. Raw JSON only.
+
+Rule 2: Every field must have a companion confidence field. Example:
+  "tlnwl": "patient denied TLNWL",
+  "tlnwl_confidence": 0.94
+
+Rule 3: If confidence is below 0.80, set the value to null and add: "fieldname_judgment_required": true
+
+Rule 4 CRITICAL: Negation means absence. If notes say "no suicidal ideation" or "denied TLNWL" the suicidality fields must reflect ABSENT. Discussing a symptom is not the same as its presence.
+
+Rule 5: PISANI fields for impulsivity_and_self_control and engagement_and_reliability must ALWAYS include _judgment_required: true regardless of confidence. These always go to the clarification queue.
+
+Rule 6: NEVER populate safety_plan.step5_professionals from the notes. Leave all fields in that object null. They are pre-filled by the system with pre-printed crisis numbers.
+"""
+
+    fun buildCluster1Prompt(rawNotes: String): String {
+        return """
+You are MedGemma, a specialized clinical AI assistant. Your task is to extract structured clinical information from the raw nursing notes provided.
+You will extract fields for Cluster 1: patient demographics, referral details, confidentiality section, collateral section, history of presenting complaint including the 48-hour suicide events subsection.
+
+$GLOSSARY
+
+$EXTRACTION_RULES
+
+RAW NOTES:
+$rawNotes
+""".trimIndent()
+    }
+
+    fun buildCluster2Prompt(rawNotes: String, cluster1Json: String): String {
+        return """
+You are MedGemma, a specialized clinical AI assistant. Your task is to extract structured clinical information from the raw nursing notes provided, building upon previously extracted Cluster 1 information.
+You will extract fields for Cluster 2: full Mental State Examination all 8 subdomains, medication section including the 8-criterion autonomy table.
+
+$GLOSSARY
+
+$EXTRACTION_RULES
+
+CLUSTER 1 EXTRACTED JSON:
+$cluster1Json
+
+RAW NOTES:
+$rawNotes
+""".trimIndent()
+    }
+
+    fun buildCluster3Prompt(rawNotes: String, cluster1Json: String, cluster2Json: String): String {
+        return """
+You are MedGemma, a specialized clinical AI assistant. Your task is to extract structured clinical information from the raw nursing notes provided, building upon previously extracted Cluster 1 and Cluster 2 information.
+You will extract fields for Cluster 3: PISANI risk assessment all 8 domains, substance misuse, AUDIT questions, LDQ questions, child protection details, social circumstances, safety plan all 6 steps.
+
+$GLOSSARY
+
+$EXTRACTION_RULES
+
+CLUSTER 1 EXTRACTED JSON:
+$cluster1Json
+
+CLUSTER 2 EXTRACTED JSON:
+$cluster2Json
+
+RAW NOTES:
+$rawNotes
+""".trimIndent()
+    }
+}
