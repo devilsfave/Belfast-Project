@@ -40,7 +40,7 @@ object ChildProtectionMapper {
         val childrenInContact = cp.childrenInRegularContact
         
         // UNOCINI Trigger logic
-        val isHighOrVeryHighRisk = pisani.overallRiskLevel == RiskLevel.HIGH || pisani.overallRiskLevel == RiskLevel.VERY_HIGH
+        val isHighOrVeryHighRisk = pisani.overallRiskLevel == RiskLevel.MEDIUM || pisani.overallRiskLevel == RiskLevel.HIGH || pisani.overallRiskLevel == RiskLevel.VERY_HIGH
         val hasWeaponsAccess = offending.accessToWeapons == true
         val hasLethalMeansAccess = familyHistory.accessToLethalMeans
         val hasInjectingHistory = substance.complexFactors.injectingHistory

@@ -1,13 +1,15 @@
 # Version catalogue — all dependency versions in one place
 [versions]
-kotlin = "2.0.21"
-agp = "8.5.2"
-ksp = "2.0.21-1.0.27"
-hilt = "2.51.1"
+kotlin = "2.2.10"
+agp = "9.0.1"
+ksp = "2.2.10-2.0.2"
+hilt = "2.59.2"
 coroutines = "1.8.1"
 serialization = "1.7.3"
 objectbox = "4.0.3"
 compose-bom = "2024.09.02"
+compose-multiplatform = "1.11.0"
+sqldelight = "2.1.0"
 hapi-fhir = "7.4.0"
 junit = "4.13.2"
 mockk = "1.13.12"
@@ -26,6 +28,13 @@ hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.re
 # ObjectBox
 objectbox-android = { module = "io.objectbox:objectbox-android", version.ref = "objectbox" }
 objectbox-kotlin = { module = "io.objectbox:objectbox-kotlin", version.ref = "objectbox" }
+
+# SQLDelight
+sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 
 # Compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
@@ -48,9 +57,14 @@ coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", ve
 
 [plugins]
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 objectbox = { id = "io.objectbox", version.ref = "objectbox" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }

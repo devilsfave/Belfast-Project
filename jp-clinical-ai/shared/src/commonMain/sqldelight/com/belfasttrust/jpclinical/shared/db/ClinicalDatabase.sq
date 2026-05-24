@@ -1,0 +1,41 @@
+CREATE TABLE ClinicalSession (
+    sessionId TEXT NOT NULL PRIMARY KEY,
+    schemaJson TEXT NOT NULL,
+    isFinalised INTEGER AS kotlin.Boolean NOT NULL DEFAULT 0,
+    createdAt INTEGER NOT NULL
+);
+
+CREATE TABLE AuditLog (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    sessionId TEXT NOT NULL,
+    eventType TEXT NOT NULL,
+    nurseId TEXT NOT NULL,
+    details TEXT NOT NULL,
+    timestamp INTEGER NOT NULL
+);
+
+-- Queries for ClinicalSession
+saveSession:
+INSERT OR REPLACE INTO ClinicalSession(sessionId, schemaJson, isFinalised, createdAt)
+VALUES (?, ?, ?, ?);
+
+loadSession:
+SELECT * FROM ClinicalSession
+WHERE sessionId = ?;
+
+finaliseSession:
+UPDATE ClinicalSession
+SET isFinalised = 1
+WHERE sessionId = ?;
+
+getAllSessions:
+SELECT sessionId FROM ClinicalSession;
+
+-- Queries for AuditLog
+insertAudit:
+INSERT INTO AuditLog(sessionId, eventType, nurseId, details, timestamp)
+VALUES (?, ?, ?, ?, ?);
+
+getAuditsForSession:
+SELECT * FROM AuditLog
+WHERE sessionId = ?;
