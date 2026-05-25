@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MedGEM</string>
+    <string name="tagline">MedGEM: Always with you.</string>
+    <string name="attribution_media_playback">Media playback</string>
+    <string name="attribution_voice_input">Voice input recording</string>
+</resources>
