@@ -94,4 +94,79 @@ RAW NOTES:
 $rawNotes
 """.trimIndent()
     }
+
+    fun buildMasterSchemaPrompt(
+        rawNotes: String,
+        hcNumber: String,
+        sessionId: String,
+        nurseId: String,
+        cluster1Json: String,
+        cluster2Json: String,
+        cluster3Json: String,
+        clarificationAnswers: Map<String, String> = emptyMap()
+    ): String {
+        val answersBlock = if (clarificationAnswers.isEmpty()) {
+            "No nurse clarification answers have been supplied yet."
+        } else {
+            clarificationAnswers.entries.joinToString("\n") { (field, answer) ->
+                "- $field: $answer"
+            }
+        }
+
+        return """
+You are MedGemma, a specialized clinical AI assistant. Convert the three extraction cluster JSON blocks into ONE final Kotlin MasterSchema JSON object for Belfast Clinical AI.
+
+$GLOSSARY
+
+$EXTRACTION_RULES
+
+STRICT OUTPUT CONTRACT:
+- Output only one raw JSON object.
+- Use camelCase property names exactly as shown in the Kotlin MasterSchema model.
+- Root values must include:
+  sessionId: "$sessionId"
+  nurseId: "$nurseId"
+  schemaVersion: "1.0"
+  schemaFinalised: false
+  extractionCluster: 3
+- If the H&C number below is non-blank, use it for patient.hcNumber unless the notes explicitly provide a different H&C number.
+- Required enum tokens must use these exact uppercase values:
+  visitType: NEW_ASSESSMENT, REVIEW, CRISIS
+  moodClassification: DEPRESSED, EUTHYMIC, ELATED, MIXED
+  insightLevel: FULL, PARTIAL, NONE
+  medication autonomy: INDEPENDENT, ASSISTED, DEPENDENT, NOT_APPLICABLE
+  dependenceLevel: LOW, MEDIUM, HIGH
+  overallRiskLevel: LOW, MEDIUM, HIGH, VERY_HIGH
+- Use fieldConfidenceScores as a flat object of dot-path to number, for example:
+  "pisaniRiskAssessment.impulsivityAndSelfControl": 0.0
+- PISANI impulsivityAndSelfControl and engagementAndReliability must be null unless the nurse explicitly supplied a clinical judgment answer.
+- Never invent crisis numbers. Safety plan step 5 must keep BelDOC 02890744447, SEBDOC 02890796220, and Lifeline 0808 808 8000 as system pre-printed values.
+- Do not include companion "_confidence" fields beside normal values. Put all confidence scores in fieldConfidenceScores only.
+- If a required non-null text field is genuinely not documented, use an empty string and set that field's confidence score to 0.0. Do not write plausible filler.
+
+SESSION ID:
+$sessionId
+
+NURSE ID:
+$nurseId
+
+H&C NUMBER ENTERED BY NURSE:
+$hcNumber
+
+NURSE CLARIFICATION ANSWERS:
+$answersBlock
+
+CLUSTER 1 EXTRACTED JSON:
+$cluster1Json
+
+CLUSTER 2 EXTRACTED JSON:
+$cluster2Json
+
+CLUSTER 3 EXTRACTED JSON:
+$cluster3Json
+
+RAW NOTES:
+$rawNotes
+""".trimIndent()
+    }
 }

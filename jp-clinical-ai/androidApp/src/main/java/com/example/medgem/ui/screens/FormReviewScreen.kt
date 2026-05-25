@@ -626,7 +626,7 @@ private fun SummaryReviewPage(
         }
 
         item {
-            val submitEnabled = hardBlocks.isEmpty()
+            val submitEnabled = hardBlocks.isEmpty() && approvedCount == totalForms && totalForms > 0
             val submitContainer by animateColorAsState(
                 targetValue = if (submitEnabled) colors.primary else colors.disabledButton,
                 animationSpec = tween(durationMillis = 150),

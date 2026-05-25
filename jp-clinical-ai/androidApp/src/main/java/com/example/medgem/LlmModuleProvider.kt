@@ -1,6 +1,7 @@
 package com.example.medgem
 
 import android.util.Log
+import com.belfasttrust.jpclinical.android.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -30,7 +31,7 @@ object LlmModuleProvider {
      * @return Result containing the LlmModule or an error
      */
     suspend fun initialize(
-        visionEnabled: Boolean = true,
+        visionEnabled: Boolean = BuildConfig.ENABLE_VISION_ENCODER,
         prefillChunkSize: Int = ModelConfig.Llm.DEFAULT_PREFILL_CHUNK_SIZE
     ): Result<LlmModule> =
         withContext(Dispatchers.IO) {
@@ -133,7 +134,7 @@ object LlmModuleProvider {
         }
 
     // We need to track the current configuration to avoid unnecessary reloads
-    private var currentVisionEnabled: Boolean = true // Default expectation
+    private var currentVisionEnabled: Boolean = BuildConfig.ENABLE_VISION_ENCODER
     private var currentPrefillChunkSize: Int = ModelConfig.Llm.DEFAULT_PREFILL_CHUNK_SIZE
 
     suspend fun updateModelConfig(

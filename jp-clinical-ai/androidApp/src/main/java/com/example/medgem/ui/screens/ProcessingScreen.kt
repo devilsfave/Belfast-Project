@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -33,7 +36,11 @@ import kotlinx.coroutines.delay
 fun ProcessingScreen(
     hasClarificationItems: Boolean,
     onComplete: (hasClarificationItems: Boolean) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    statusMessage: String? = null,
+    errorMessage: String? = null,
+    onBackToNotes: (() -> Unit)? = null,
+    autoComplete: Boolean = true
 ) {
     val colors = rememberProcessingColors()
     val statusMessages = remember {
@@ -52,9 +59,11 @@ fun ProcessingScreen(
         }
     }
 
-    LaunchedEffect(hasClarificationItems) {
-        delay(3_000)
-        onComplete(hasClarificationItems)
+    LaunchedEffect(hasClarificationItems, autoComplete, errorMessage) {
+        if (autoComplete && errorMessage == null) {
+            delay(3_000)
+            onComplete(hasClarificationItems)
+        }
     }
 
     Scaffold(
@@ -68,27 +77,63 @@ fun ProcessingScreen(
                 .navigationBarsPadding()
                 .padding(24.dp)
         ) {
-            Column(
-                modifier = Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                CircularProgressIndicator(color = colors.primary)
-                Spacer(modifier = Modifier.height(24.dp))
-                Text(
-                    text = "Analysing your notes...",
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        color = colors.text,
-                        fontWeight = FontWeight.Medium
-                    ),
-                    textAlign = TextAlign.Center
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = statusMessages[statusIndex],
-                    style = MaterialTheme.typography.bodyMedium.copy(color = colors.mutedText),
-                    textAlign = TextAlign.Center
-                )
+            if (errorMessage != null) {
+                Column(
+                    modifier = Modifier.align(Alignment.Center),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Processing could not continue",
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            color = colors.error,
+                            fontWeight = FontWeight.Medium
+                        ),
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = errorMessage,
+                        style = MaterialTheme.typography.bodyMedium.copy(color = colors.text),
+                        textAlign = TextAlign.Center
+                    )
+                    if (onBackToNotes != null) {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        Button(
+                            onClick = onBackToNotes,
+                            shape = RoundedCornerShape(8.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = colors.primary,
+                                contentColor = Color.White
+                            )
+                        ) {
+                            Text("BACK TO NOTES")
+                        }
+                    }
+                }
+            } else {
+                Column(
+                    modifier = Modifier.align(Alignment.Center),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    CircularProgressIndicator(color = colors.primary)
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Text(
+                        text = "Analysing your notes...",
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            color = colors.text,
+                            fontWeight = FontWeight.Medium
+                        ),
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = statusMessage ?: statusMessages[statusIndex],
+                        style = MaterialTheme.typography.bodyMedium.copy(color = colors.mutedText),
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
 
             Text(
@@ -108,7 +153,8 @@ private fun rememberProcessingColors(): ProcessingColors {
         primary = Color(0xFF00695C),
         background = if (dark) Color(0xFF121212) else Color(0xFFFAFAFA),
         text = if (dark) Color(0xFFE8E8E8) else Color(0xFF1A1A1A),
-        mutedText = if (dark) Color(0xFFB8B8B8) else Color(0xFF666666)
+        mutedText = if (dark) Color(0xFFB8B8B8) else Color(0xFF666666),
+        error = Color(0xFFB71C1C)
     )
 }
 
@@ -116,7 +162,8 @@ private data class ProcessingColors(
     val primary: Color,
     val background: Color,
     val text: Color,
-    val mutedText: Color
+    val mutedText: Color,
+    val error: Color
 )
 
 @Preview(showBackground = true, widthDp = 390, heightDp = 844)

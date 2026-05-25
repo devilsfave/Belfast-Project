@@ -1,6 +1,10 @@
 package com.example.medgem.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,6 +14,8 @@ import com.example.medgem.ui.screens.FormReviewScreen
 import com.example.medgem.ui.screens.NoteInputScreen
 import com.example.medgem.ui.screens.ProcessingScreen
 import com.example.medgem.ui.screens.SessionCompleteScreen
+import com.example.medgem.ui.viewmodel.BelfastPipelineStage
+import com.example.medgem.ui.viewmodel.BelfastPipelineViewModel
 
 object BelfastRoute {
     const val NOTE_INPUT = "note_input"
@@ -22,6 +28,8 @@ object BelfastRoute {
 @Composable
 fun BelfastNavGraph() {
     val navController = rememberNavController()
+    val viewModel: BelfastPipelineViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsState()
 
     NavHost(
         navController = navController,
@@ -29,40 +37,62 @@ fun BelfastNavGraph() {
     ) {
         composable(BelfastRoute.NOTE_INPUT) {
             NoteInputScreen(
-                onProcessNotes = { _, _ ->
+                onProcessNotes = { hcNumber, noteText ->
+                    viewModel.startSession(hcNumber, noteText)
                     navController.navigate(BelfastRoute.PROCESSING)
                 }
             )
         }
 
         composable(BelfastRoute.PROCESSING) {
+            LaunchedEffect(uiState.stage) {
+                when (uiState.stage) {
+                    BelfastPipelineStage.NEEDS_CLARIFICATION -> {
+                        navController.navigate(BelfastRoute.CLARIFICATION_QUEUE) {
+                            popUpTo(BelfastRoute.PROCESSING) { inclusive = true }
+                        }
+                    }
+                    BelfastPipelineStage.READY_FOR_REVIEW -> {
+                        navController.navigate(BelfastRoute.FORM_REVIEW) {
+                            popUpTo(BelfastRoute.PROCESSING) { inclusive = true }
+                        }
+                    }
+                    else -> Unit
+                }
+            }
+
             ProcessingScreen(
-                hasClarificationItems = true,
-                onComplete = { hasClarificationItems ->
-                    val nextRoute = if (hasClarificationItems) {
-                        BelfastRoute.CLARIFICATION_QUEUE
-                    } else {
-                        BelfastRoute.FORM_REVIEW
+                hasClarificationItems = uiState.clarificationItems.isNotEmpty(),
+                onComplete = {},
+                statusMessage = uiState.statusMessage,
+                errorMessage = uiState.errorMessage,
+                autoComplete = false,
+                onBackToNotes = {
+                    navController.navigate(BelfastRoute.NOTE_INPUT) {
+                        popUpTo(BelfastRoute.NOTE_INPUT) { inclusive = true }
                     }
-                    navController.navigate(nextRoute) {
-                        popUpTo(BelfastRoute.PROCESSING) { inclusive = true }
-                    }
+                    viewModel.resetForNewSession()
                 }
             )
         }
 
         composable(BelfastRoute.CLARIFICATION_QUEUE) {
             ClarificationQueueScreen(
-                onSubmit = {
-                    navController.navigate(BelfastRoute.FORM_REVIEW)
+                items = uiState.clarificationItems,
+                onSubmit = { answers ->
+                    viewModel.submitClarifications(answers)
+                    navController.navigate(BelfastRoute.PROCESSING) {
+                        popUpTo(BelfastRoute.CLARIFICATION_QUEUE) { inclusive = true }
+                    }
                 }
             )
         }
 
         composable(BelfastRoute.FORM_REVIEW) {
             FormReviewScreen(
-                hardBlocks = emptyList(),
-                softFlags = emptyList(),
+                forms = uiState.reviewForms,
+                hardBlocks = uiState.hardBlocks,
+                softFlags = uiState.softFlags,
                 onSubmitForEpicSync = {
                     navController.navigate(BelfastRoute.SESSION_COMPLETE)
                 }
@@ -71,7 +101,9 @@ fun BelfastNavGraph() {
 
         composable(BelfastRoute.SESSION_COMPLETE) {
             SessionCompleteScreen(
+                approvedFormCount = uiState.reviewForms.size,
                 onStartNewSession = {
+                    viewModel.resetForNewSession()
                     navController.navigate(BelfastRoute.NOTE_INPUT) {
                         popUpTo(navController.graph.findStartDestination().id) {
                             inclusive = true
