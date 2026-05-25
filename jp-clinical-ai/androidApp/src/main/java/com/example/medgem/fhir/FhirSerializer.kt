@@ -48,7 +48,7 @@ object FhirSerializer {
             subject = Reference("urn:uuid:${fhirPatient.id}")
             
             // Set author (nurse)
-            addAuthor().apply {
+            author = Reference().apply {
                 reference = "urn:uuid:$nurseId"
                 display = plan.assessorName
             }
@@ -167,7 +167,7 @@ object FhirSerializer {
             subject = Reference("urn:uuid:${fhirPatient.id}")
             
             // Assessor (Practitioner)
-            addPerformer().apply {
+            performer = Reference().apply {
                 reference = "urn:uuid:$nurseId"
                 display = assessment.assessorName
             }
