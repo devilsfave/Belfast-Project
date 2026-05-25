@@ -31,6 +31,7 @@ android {
         buildConfigField("boolean", "ENABLE_VISION_ENCODER", "false")
         buildConfigField("boolean", "SHOW_BELFAST_UI", "false")
         buildConfigField("boolean", "SHOW_DEV_TOOLS", "false")
+        buildConfigField("String", "EPIC_ENDPOINT_URL", "\"https://placeholder.belfasttrust.hscni.net/fhir\"")
     }
 
     buildTypes {

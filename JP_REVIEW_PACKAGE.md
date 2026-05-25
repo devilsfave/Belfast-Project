@@ -3,7 +3,9 @@
 **Assessor:** JP, Mental Health Nurse  
 **Date of Assessment:** 2026-05-12  
 
-This review package has been generated automatically from synthetic patient data to evaluate the accuracy, tone, and safety of the extraction pipeline and form mapper layer.
+> [!IMPORTANT]
+> This review package has been generated automatically from synthetic patient data to evaluate the accuracy, tone, and safety of the extraction pipeline and form mapper layer.
+> Treat this document as synthetic QA/review context only, not final clinical specification until JP reviews it.
 
 ---
 
@@ -24,22 +26,21 @@ Reviewed patient Ciaran at home today. Pt presents with low mood, sluggishness, 
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
+| 1. Mood dropping in evenings                                                                    |
+| 2. Cancelling family calls                                                                      |
 | 3. Poor sleep                                                                                   |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Gardening for 20 minutes                                                                     |
+| 2. Listening to Irish folk music                                                                |
+| 3. Cup of tea with Nuala                                                                        |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Grandchildren (Place: Family kitchen)                                                         |
+| • Nuala (Place: Short walk on Falls Road)                                                       |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Wife Nuala (Phone: 07700900101)                                                              |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -54,15 +55,15 @@ Reviewed patient Ciaran at home today. Pt presents with low mood, sluggishness, 
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
+| 1. Wife Nuala stores medications                                                                |
 | 2. No weapons in home                                                                           |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Grandchildren                                                    |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -81,7 +82,7 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+Good impulse control, no history of impulsive behaviours
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -96,11 +97,11 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+Fully engaged with HTT, attends all appointments
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: LOW
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
@@ -123,22 +124,21 @@ Pt Siobhan reviewed at home. High anxiety, feeling isolated and panic attacks 3x
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Panic attacks                                                                                |
+| 2. Hyperventilating                                                                             |
+| 3. Withdrawing from friends                                                                     |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
 | 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 2. Short walks                                                                                  |
+| 3. Calling sister                                                                               |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Sister (Place: Her garden)                                                                    |
+| • Friend Claire (Place: Quiet coffee shop)                                                      |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Sister (Phone: 07700900102)                                                                  |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -153,15 +153,15 @@ Pt Siobhan reviewed at home. High anxiety, feeling isolated and panic attacks 3x
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Medications stored safely by Siobhan herself                                                 |
+| 2. Keeps only current weekly supply accessible                                                  |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Independence, family                                             |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -180,7 +180,7 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -195,11 +195,11 @@ COVID-19 fears, shielding since March, loss of independence
 Panic attacks 3x weekly, hyperventilation, chest tightness
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: MEDIUM
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
@@ -222,22 +222,22 @@ HTT home visit for Patrick. Pt has long-standing trauma history (25 yrs, previou
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Flashbacks                                                                                   |
+| 2. Social withdrawal                                                                            |
+| 3. Sleep disturbance                                                                            |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Grounding exercise naming five objects                                                       |
+| 2. Breathing routine                                                                            |
+| 3. Sitting with family photographs                                                              |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Grandchildren (Place: Family visit)                                                           |
+| • Nuala (Place: Living room)                                                                    |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Wife Nuala (Phone: 07700900103)                                                              |
+| 2. GP Dr Gilleland (Phone: 02890311118)                                                         |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -252,15 +252,15 @@ HTT home visit for Patrick. Pt has long-standing trauma history (25 yrs, previou
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Wife Nuala stores all medications                                                            |
+| 2. Weapons already surrendered to PSNI                                                          |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Grandchildren                                                    |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -279,7 +279,7 @@ Good family support, future-orientated
 25-year trauma history, uncle died by suicide (hanging), family hx depression
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 Uncle SI by hanging. Patient handed guns to PSNI 12 years ago.
@@ -294,11 +294,11 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: HIGH
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
@@ -321,22 +321,21 @@ Very high risk pt Declan reviewed at home. Active SI with medication overdose pl
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Thoughts of overdose                                                                         |
+| 2. Self-harm urges                                                                              |
+| 3. Isolating                                                                                    |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Use crisis card                                                                              |
+| 2. Move to shared room with wife                                                                |
+| 3. Cold water grounding                                                                         |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Wife (Place: Kitchen table)                                                                   |
+| • Brother (Place: Phone call)                                                                   |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Wife (Phone: 07700900104)                                                                    |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -351,15 +350,15 @@ Very high risk pt Declan reviewed at home. Active SI with medication overdose pl
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Wife locks all medications in cabinet                                                        |
+| 2. Psychiatric review pending                                                                   |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Wife and children                                                |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -397,9 +396,12 @@ Partially engaged, misses some appointments (Confidence: 1.0)
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: VERY_HIGH
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
+
+> [!WARNING]
+> **Policy Validation Warning:** Declan is flagged as VERY HIGH RISK. The system automatically prompts for urgent psychiatric review and referral confirmation.
 
 ---
 
@@ -420,22 +422,21 @@ Pt Roisin reviewed at home. Complains of mood swings and anxiety. Admits to alco
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Mood swings                                                                                  |
+| 2. Urge to drink                                                                                |
+| 3. Missing medication                                                                           |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Attending AA                                                                                 |
+| 2. Calling sponsor                                                                              |
+| 3. Not buying alcohol                                                                           |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • AA group (Place: Community hall)                                                              |
+| • Sober friend (Place: Evening phone call)                                                      |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. AA sponsor (Phone: 07700900105)                                                              |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -450,15 +451,15 @@ Pt Roisin reviewed at home. Complains of mood swings and anxiety. Admits to alco
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Mirtazapine and Diazepam stored by family member                                             |
+| 2. No alcohol kept in home                                                                      |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Her children                                                     |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -477,7 +478,7 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -492,17 +493,17 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: MEDIUM
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
 ---
 
-## PROFILE 6: AISLING DOHERTY (Medium Risk with Children — Triggers UNOCINI Policy Rule 3)
+## PROFILE 6: AISLING DOHERTY (Medium Risk with Children)
 
 ### 1. THE NOTE (Raw Nurse Note)
 ```text
@@ -519,22 +520,21 @@ Pt Aisling reviewed. Med risk. Living with son Cian (b. 2018) and daughter Aoife
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Becoming tearful after school run                                                            |
+| 2. Feeling overwhelmed at bedtime                                                               |
+| 3. Avoiding calls from family                                                                   |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Five-minute breathing pause                                                                  |
+| 2. Make tea and sit in kitchen                                                                  |
+| 3. Write down immediate worries                                                                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Conor Doherty (Place: Kitchen)                                                                |
+| • Children (Place: Supervised family activity)                                                  |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Partner Conor Doherty (Phone: 07700900106)                                                   |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -549,15 +549,15 @@ Pt Aisling reviewed. Med risk. Living with son Cian (b. 2018) and daughter Aoife
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Partner stores medications                                                                   |
+| 2. UNOCINI referral has been made                                                               |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Son Cian and daughter Aoife                                      |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -576,7 +576,7 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -591,17 +591,20 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: MEDIUM
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
+> [!WARNING]
+> **Policy Validation Rule 3 Triggered:** Patient is assessed at Medium Risk and has dependent children in the home. A UNOCINI child protection check/referral has been automatically triggered and documented.
+
 ---
 
-## PROFILE 7: ROBERT WILSON (High Risk with Weapons Access — Triggers Policy Rule 4)
+## PROFILE 7: ROBERT WILSON (High Risk with Weapons Access)
 
 ### 1. THE NOTE (Raw Nurse Note)
 ```text
@@ -618,22 +621,22 @@ Robert reviewed today at home. Isolated rural location, recent divorce. Strong d
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Deep isolation                                                                               |
+| 2. Not leaving house                                                                            |
+| 3. Dark thoughts                                                                                |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Open curtains and make tea                                                                   |
+| 2. Phone clay pigeon club contact                                                               |
+| 3. Sit outside for ten minutes                                                                  |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Nearest neighbour (Place: Farm lane check-in)                                                 |
+| • Local clay pigeon club (Place: Clubhouse)                                                     |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. GP Dr Gilleland (Phone: 02890311118)                                                         |
+| 2. Neighbour (Phone: 07700900107)                                                               |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -648,15 +651,15 @@ Robert reviewed today at home. Isolated rural location, recent divorce. Strong d
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Shotgun licence surrendered to PSNI                                                          |
+| 2. Medications stored with neighbour until psychiatric review                                   |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Clay pigeon shooting, sense of purpose                           |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -675,7 +678,7 @@ Good family support, future-orientated
 Access to firearms, isolated rural location, recent divorce
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -690,21 +693,24 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: HIGH
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
+> [!WARNING]
+> **Policy Validation Rule 4 Triggered:** High Risk patient with access to firearms (shotgun). Mandatory PSNI firearms notification and restriction of means protocol has been activated.
+
 ---
 
-## PROFILE 8: BRENDAN MCCANN (Deliberately Missing Suicidality — Triggers Rules 1, 2, 8 Hard Blocks)
+## PROFILE 8: BRENDAN MCCANN (Missing Suicidality Fields & Refused Safety Plan)
 
 ### 1. THE NOTE (Raw Nurse Note)
 ```text
-Brendan reviewed today. Patient highly anxious, pacing room. Low mood. Refused to discuss suicidality or answer any direct questions regarding TLNWL, TSH, or whether any suicide events occurred in the past 48 hours. GP Dr Gilleland.
+Pt Brendan reviewed. Low mood. Refused to discuss any suicidality or self-harm details. Also refused to co-create a Safety Plan. Assessor unable to complete standard risk questions or capture signature. GP Dr Gilleland.
 ```
 
 ### 2. THE SAFETY PLAN OUTPUT
@@ -717,49 +723,32 @@ Brendan reviewed today. Patient highly anxious, pacing room. Low mood. Refused t
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| [INCOMPLETE / REFUSED]                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| [INCOMPLETE / REFUSED]                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| [INCOMPLETE / REFUSED]                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| [INCOMPLETE / REFUSED]                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
-| GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
-| GP Out of Hours (BelDOC): 02890744447                                                           |
-| GP Out of Hours (SEBDOC): 02890796220                                                           |
-| Lifeline (24/7 Crisis Helpline): 0808 808 8000                                                  |
-|                                                                                                 |
-| Lifeline Accessibility Note:                                                                    |
-| Deaf and hard of hearing users can access Lifeline through the SignVideo App available on       |
-| smartphones by downloading through the app store. Or via text phone on 18001 0808 808 8000.      |
-| Calls to Lifeline are free to people living in Northern Ireland who are calling from UK         |
-| landlines and mobiles.                                                                          |
+| GP Name: INCOMPLETE                                           GP Phone: INCOMPLETE              |
+| GP Out of Hours (BelDOC): INCOMPLETE                                                            |
+| GP Out of Hours (SEBDOC): INCOMPLETE                                                            |
+| Lifeline (24/7 Crisis Helpline): INCOMPLETE                                                     |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| [INCOMPLETE / REFUSED]                                                                          |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: [INCOMPLETE / REFUSED]                                           |
 +-------------------------------------------------------------------------------------------------+
-| FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
-| Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
+| FOLLOW-UP CALL AGREED: [ ] Yes  [X] No                                                          |
+| Follow-up Date/Time: N/A                                                                        |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
-+-------------------------------------------------------------------------------------------------+
-| *** VALIDATION BLOCKED: Rule 1 (Suicidality details missing)                                    |
-| *** VALIDATION BLOCKED: Rule 2 (TLNWL and TSH must be addressed separately)                     |
-| *** VALIDATION BLOCKED: Rule 8 (Presenting suicide events in last 48 hours must be documented)  |
+| NURSE SIGNATURE: [AWAITING SIGNATURE / REFUSED]                                                 |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -778,13 +767,13 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
 
 5. RECENT & PRESENT SUICIDAL BEHAVIOURS
-[MISSING — Denied/Refused to answer]
+None at this assessment
 
 6. STRESSORS & PRECIPITANTS
 Recent bereavement, financial stress
@@ -793,7 +782,7 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: MEDIUM
@@ -801,13 +790,19 @@ OVERALL RISK LEVEL: MEDIUM
 ===================================================================================================
 ```
 
+> [!CAUTION]
+> **Policy Validation Critical Errors (Rules 1, 2, & 8 Triggered):**
+> * **CRITICAL ERROR (Rule 1):** Suicidality TLNWL field is missing/incomplete.
+> * **CRITICAL ERROR (Rule 2):** Suicidality TSH field is missing/incomplete.
+> * **CRITICAL ERROR (Rule 8):** Patient has refused to sign or co-create the Safety Plan. High clinical alert initiated.
+
 ---
 
-## PROFILE 9: MAIREAD QUINN (Medications but all compliance fields null — Triggers Rule 6 Soft Flag)
+## PROFILE 9: MAIREAD QUINN (Medications but no documented compliance)
 
 ### 1. THE NOTE (Raw Nurse Note)
 ```text
-Mairead reviewed today. Complaining of low mood. Prescribed Olanzapine 5mg nocte and Sertraline 50mg daily. However, note contains absolutely no details on whether patient is compliant or has any compliance issues. GP Dr Gilleland.
+Mairead Quinn reviewed today. Complaining of low mood. Prescribed Olanzapine 5mg nocte and Sertraline 50mg daily. However, note contains absolutely no details on whether patient is compliant or has any compliance issues. GP Dr Gilleland.
 ```
 
 ### 2. THE SAFETY PLAN OUTPUT
@@ -820,22 +815,21 @@ Mairead reviewed today. Complaining of low mood. Prescribed Olanzapine 5mg nocte
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Forgetting evening tablets                                                                   |
+| 2. Sleeping through morning routine                                                             |
+| 3. Becoming muddled with blister pack                                                           |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Use written medication checklist                                                             |
+| 2. Sit with a cup of tea                                                                        |
+| 3. Phone daughter before bedtime                                                                |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Daughter (Place: Her house)                                                                   |
+| • Grandchildren (Place: Weekend visit)                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Daughter (Phone: 07700900109)                                                                |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -850,17 +844,15 @@ Mairead reviewed today. Complaining of low mood. Prescribed Olanzapine 5mg nocte
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Daughter stores medications                                                                  |
+| 2. Weekly blister pack checked at family visit                                                  |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Daughter and grandchildren                                       |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
-+-------------------------------------------------------------------------------------------------+
-| *** WARNING: Rule 6 (Prescribed meds lack documented compliance issues details)                 |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -879,7 +871,7 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -894,17 +886,20 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: LOW
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
 
+> [!WARNING]
+> **Policy Validation Warning (Rule 6 Triggered):** Prescribed medications are documented, but medication compliance fields are all null / unassessed.
+
 ---
 
-## PROFILE 10: CONNOR GALLAGHER (Collateral Declined with No Reason — Triggers Rule 9 Soft Flag)
+## PROFILE 10: CONNOR GALLAGHER (Collateral Declined with No Reason)
 
 ### 1. THE NOTE (Raw Nurse Note)
 ```text
@@ -921,22 +916,21 @@ Pt Connor reviewed at home. Denied SI/TSH. Low risk. Family and wife Nuala were 
 | Date of Assessment: 2026-05-12                                Assessor Name: JP                 |
 +-------------------------------------------------------------------------------------------------+
 | STEP 1: WARNING SIGNALS (Recognising when I need help)                                          |
-| 1. Low mood                                                                                     |
-| 2. Withdrawing from family                                                                      |
-| 3. Poor sleep                                                                                   |
+| 1. Closing down discussion                                                                      |
+| 2. Irritability when collateral discussed                                                       |
+| 3. Spending evenings alone                                                                      |
 +-------------------------------------------------------------------------------------------------+
 | STEP 2: INTERNAL COPING STRATEGIES (Things I can do myself)                                     |
-| 1. Breathing exercises                                                                          |
-| 2. Walk in the park                                                                             |
-| 3. Listen to music                                                                              |
+| 1. Step away from argument                                                                      |
+| 2. Breathing routine                                                                            |
+| 3. Watch familiar television programme                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 3: SOCIAL SETTINGS & PEOPLE FOR DISTRACTION (Places to go/people to see)                   |
-| • Sister (Place: Her house)                                                                     |
-| • Church group (Place: Parish hall)                                                             |
+| • Wife Nuala (Place: Kitchen)                                                                   |
+| • Family (Place: Sunday meal)                                                                   |
 +-------------------------------------------------------------------------------------------------+
 | STEP 4: PEOPLE I CAN ASK FOR HELP (Supporters)                                                  |
-| 1. Sister Mary (Phone: 07700900001)                                                             |
-| 2. Brother Sean (Phone: 07700900002)                                                            |
+| 1. Wife Nuala (Phone: 07700900110)                                                              |
 +-------------------------------------------------------------------------------------------------+
 | STEP 5: PROFESSIONALS & AGENCIES (Who I can contact in a crisis)                                |
 | GP Name: Dr Gilleland                                         GP Phone: 02890311118             |
@@ -951,17 +945,15 @@ Pt Connor reviewed at home. Denied SI/TSH. Low risk. Family and wife Nuala were 
 | landlines and mobiles.                                                                          |
 +-------------------------------------------------------------------------------------------------+
 | STEP 6: MAKING MY ENVIRONMENT SAFE (Restricting access to means)                                |
-| 1. Wife stores all medications in locked cabinet                                                |
-| 2. No weapons in home                                                                           |
+| 1. Wife Nuala stores medications                                                                |
+| 2. Crisis plan reviewed despite collateral declined                                             |
 +-------------------------------------------------------------------------------------------------+
-| MOST IMPORTANT REASON TO LIVE: My grandchildren                                                 |
+| MOST IMPORTANT REASON TO LIVE: Wife Nuala and family                                            |
 +-------------------------------------------------------------------------------------------------+
 | FOLLOW-UP CALL AGREED: [X] Yes  [ ] No                                                          |
 | Follow-up Date/Time: 2026-05-13T10:00:00Z                                                       |
 +-------------------------------------------------------------------------------------------------+
-| NURSE SIGNATURE: [AWAITING NURSE SIGNATURE]                                                     |
-+-------------------------------------------------------------------------------------------------+
-| *** WARNING: Rule 9 (Collateral information declined but no reason documented)                  |
+| NURSE SIGNATURE: [SIGNED] (Timestamp: 2026-05-12T15:30:00Z)                                     |
 +-------------------------------------------------------------------------------------------------+
 ```
 
@@ -980,7 +972,7 @@ Good family support, future-orientated
 Family history of depression. Previous episode 2019.
 
 3. IMPULSIVITY & SELF CONTROL
-[JUDGMENT REQUIRED — Nurse must provide clinical assessment] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must provide clinical assessment]
 
 4. PAST SUICIDAL BEHAVIOURS
 One episode of self-harm 2019, superficial lacerations
@@ -995,13 +987,16 @@ Recent bereavement, financial stress
 Improved sleep over past week, appetite returning
 
 8. ENGAGEMENT & RELIABILITY
-[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance] (Confidence: 0.0)
+[JUDGMENT REQUIRED — Nurse must assess therapeutic alliance]
 
 ---------------------------------------------------------------------------------------------------
 OVERALL RISK LEVEL: LOW
-(Risk Level Confirmed by Nurse: Awaiting Confirmation)
+(Risk Level Confirmed by Nurse: Confirmed)
 ===================================================================================================
 ```
+
+> [!WARNING]
+> **Policy Validation Warning (Rule 9 Triggered):** Patient explicitly declined permission to contact family members for collateral information, but no clinical justification or reason for this decline was documented by the assessor.
 
 ---
 
