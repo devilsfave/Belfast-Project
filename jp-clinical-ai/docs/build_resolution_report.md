@@ -132,3 +132,24 @@ Following these modifications, the build task was successfully run:
 .\gradlew :androidApp:assembleDebug
 ```
 **Result:** **`BUILD SUCCESSFUL in 1m 59s`** with zero remaining compiler errors.
+
+---
+
+## 6. Duplicate Android Source Tree / Wrong Path Risk
+### The Error Risk
+The project contains two Android source trees:
+```text
+androidApp/src/main/...      # compiled module path
+androidApp/app/src/main/...  # unused duplicate path
+```
+Several prompts and generated files referenced `androidApp/app/src/main/...`, which would be ignored by Gradle.
+
+### Root Cause
+The MedGEM bootstrap left a legacy nested `app` structure inside `androidApp`. The active Gradle module evaluates sources from `androidApp/src/main/...`, not the nested `androidApp/app/src/main/...` directory.
+
+### The Solution
+All working Belfast UI, navigation, and pipeline wiring was implemented under the compiled path:
+```text
+androidApp/src/main/java/com/example/medgem/...
+```
+Debug APK builds then succeeded. Future agents must not add Kotlin files under `androidApp/app/src/main/...`; that tree should be treated as dead code unless explicitly cleaning it up.

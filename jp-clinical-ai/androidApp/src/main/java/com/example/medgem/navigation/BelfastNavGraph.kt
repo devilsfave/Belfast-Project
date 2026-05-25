@@ -9,13 +9,17 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import com.example.medgem.ui.screens.ClarificationQueueScreen
 import com.example.medgem.ui.screens.FormReviewScreen
+import com.example.medgem.ui.screens.ModelDownloadScreen
 import com.example.medgem.ui.screens.NoteInputScreen
 import com.example.medgem.ui.screens.ProcessingScreen
 import com.example.medgem.ui.screens.SessionCompleteScreen
 import com.example.medgem.ui.viewmodel.BelfastPipelineStage
 import com.example.medgem.ui.viewmodel.BelfastPipelineViewModel
+import java.io.File
 
 object BelfastRoute {
     const val NOTE_INPUT = "note_input"
@@ -23,6 +27,7 @@ object BelfastRoute {
     const val CLARIFICATION_QUEUE = "clarification_queue"
     const val FORM_REVIEW = "form_review"
     const val SESSION_COMPLETE = "session_complete"
+    const val MODEL_DOWNLOAD = "model_download"
 }
 
 @Composable
@@ -30,16 +35,29 @@ fun BelfastNavGraph() {
     val navController = rememberNavController()
     val viewModel: BelfastPipelineViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
+    val modelsDownloaded = remember { areModelsDownloaded(context) }
+    val startDestination = if (modelsDownloaded) BelfastRoute.NOTE_INPUT else BelfastRoute.MODEL_DOWNLOAD
 
     NavHost(
         navController = navController,
-        startDestination = BelfastRoute.NOTE_INPUT
+        startDestination = startDestination
     ) {
         composable(BelfastRoute.NOTE_INPUT) {
             NoteInputScreen(
                 onProcessNotes = { hcNumber, noteText ->
                     viewModel.startSession(hcNumber, noteText)
                     navController.navigate(BelfastRoute.PROCESSING)
+                }
+            )
+        }
+
+        composable(BelfastRoute.MODEL_DOWNLOAD) {
+            ModelDownloadScreen(
+                onDownloadCompleted = {
+                    navController.navigate(BelfastRoute.NOTE_INPUT) {
+                        popUpTo(BelfastRoute.MODEL_DOWNLOAD) { inclusive = true }
+                    }
                 }
             )
         }
@@ -113,5 +131,21 @@ fun BelfastNavGraph() {
                 }
             )
         }
+    }
+}
+
+private fun areModelsDownloaded(context: android.content.Context): Boolean {
+    val filesDir = context.filesDir
+    val requiredFiles = listOf(
+        "model.pte",
+        "tokenizer.model",
+        "embedding_gemma_no_normalize_q8.tflite",
+        "model.int8.onnx",
+        "tokens.txt"
+    )
+    return requiredFiles.all { path ->
+        val destinationFile = File(filesDir, path)
+        val markerFile = File(destinationFile.absolutePath + ".complete")
+        destinationFile.exists() && destinationFile.length() > 0 && markerFile.exists()
     }
 }
