@@ -29,11 +29,13 @@ android {
 
         // Build config flags
         buildConfigField("boolean", "ENABLE_VISION_ENCODER", "false")
+        buildConfigField("boolean", "SHOW_BELFAST_UI", "false")
         buildConfigField("boolean", "SHOW_DEV_TOOLS", "false")
     }
 
     buildTypes {
         debug {
+            buildConfigField("boolean", "SHOW_BELFAST_UI", "true")
             buildConfigField("boolean", "SHOW_DEV_TOOLS", "true")
         }
         release {

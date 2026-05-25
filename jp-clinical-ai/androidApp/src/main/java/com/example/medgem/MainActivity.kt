@@ -25,8 +25,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.belfasttrust.jpclinical.android.BuildConfig
 import com.example.medgem.data.ChatRepository
 import com.example.medgem.data.UserPreferencesRepository
+import com.example.medgem.navigation.BelfastNavGraph
 import com.example.medgem.ui.components.UnifiedConversationListScreen
 import com.example.medgem.ui.screens.DisclaimerScreen
 import com.example.medgem.ui.screens.ModelDownloadScreen
@@ -56,10 +58,14 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             MedGemTheme {
-                MainScreen(
-                    userPreferencesRepository = userPreferencesRepository,
-                    chatRepository = chatRepository
-                )
+                if (BuildConfig.SHOW_BELFAST_UI) {
+                    BelfastNavGraph()
+                } else {
+                    MainScreen(
+                        userPreferencesRepository = userPreferencesRepository,
+                        chatRepository = chatRepository
+                    )
+                }
             }
         }
     }
